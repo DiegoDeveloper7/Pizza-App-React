@@ -20,7 +20,7 @@ export const Home = () => {
             <TarjetaPizza
               name="Pizza Española"
               price={6950}
-              ingredients={["mozzarella", "gorgonzola", "parmesano", "provolone", "aceitunas"]}
+              ingredients={["mozzarella", "gorgonzola", "parmesano", "aceitunas"]}
               img={españolaImg}
             />
           </div>
