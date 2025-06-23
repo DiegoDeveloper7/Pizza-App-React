@@ -11,15 +11,16 @@ import { Home } from './components/Home';
 import { Footer } from './components/Footer';
 
 function App() {
- // const [count, setCount] = useState(0)
 
   return (
-    < >
-       <Navbar/>
-       <Header/>
-       <Home/>
-       <Footer/>
-    </>
+  <div className="app-container">
+    <Navbar />
+    <Header />
+     <main>
+        <Home />
+      </main>
+    <Footer />
+  </div>
   )
 }
 

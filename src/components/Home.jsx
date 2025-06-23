@@ -6,7 +6,7 @@ import peperoniImg from '../assets/imgs/peperoni.webp';
 export const Home = () => {
   return (
     <>
-      <div className="container my-5 ">
+      <div id="home" className="container my-5 ">
         <div className="row g-4 ">
           <div className="col-md-4">
             <TarjetaPizza
