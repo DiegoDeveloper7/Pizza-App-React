@@ -8,7 +8,7 @@ export const Footer = () => {
             <p className="mb-0">
               © 2025 - Pizzería MammaMia! - Todos los derechos reservados
             </p>
-            <a href="https://github.com/vfaundez-dev" className="small mb-0 text-light text-decoration-none">
+            <a href="https://github.com/DiegoDeveloper7" className="small mb-0 text-light text-decoration-none">
               Software Development by ING. Diego González
             </a>
           </div>

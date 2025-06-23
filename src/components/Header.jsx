@@ -1,4 +1,4 @@
-import '../assets/estilos/estilos.css';
+/*import '../assets/estilos/estilos.css';*/
 
 export const Header = () => {
   return (

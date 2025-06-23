@@ -13,16 +13,28 @@ html, body {
 }
 
 .app-container {
-  flex: 1;
+  flex: 1;                  /* AEFECTA LA ETIQUETA DIV QUE RETORNA FUNTION APP APP.JSX*/
   display: flex;
   flex-direction: column;
 }
 
 main {
-  flex: 1; /* hace que el contenido principal se expanda */
+  flex: 1; /* hace que el contenido principal se expanda AFETACTA LA ETIQUETA main App.jsx */
   display: flex;
   flex-direction: column;
 }
+
+
+.navbar-brand {
+
+    color: yellow;
+
+}
+
+.nav-link {
+   color: #39FF14;
+}
+
 
 
 
@@ -58,12 +70,16 @@ main {
    font-size: 1rem;
 }
 
+/* BLOQUE DEL LAS DEL HOME */
+
 #home {
   margin-top: 60px;
   border: 5px solid #39FF14;
   padding: 0 10px 49px 10px;
 
 }
+
+/* BLOQUE DEL FOOTER */
 
 .bg-negro-puro {
   background-color: black;
