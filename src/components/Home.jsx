@@ -6,12 +6,12 @@ import peperoniImg from '../assets/imgs/peperoni.webp';
 export const Home = () => {
   return (
     <>
-      <div id="home" className="container my-5 ">
-        <div className="row g-4 ">
+      <div  className="container my-1 ">
+        <div id="home" className="row g-5 ">
           <div className="col-md-4">
             <TarjetaPizza
               name="Pizza Napolitana"
-              price={5950}
+              price={9000}
               ingredients={["mozzarella", "tomates", "jamón", "orégano"]}
               img={napolitanaImg}
             />
@@ -19,7 +19,7 @@ export const Home = () => {
           <div className="col-md-4">
             <TarjetaPizza
               name="Pizza Española"
-              price={6950}
+              price={8000}
               ingredients={["mozzarella", "gorgonzola", "parmesano", "aceitunas"]}
               img={españolaImg}
             />
@@ -27,7 +27,7 @@ export const Home = () => {
           <div className="col-md-4">
             <TarjetaPizza
               name="Pizza Pepperoni"
-              price={6950}
+              price={7000}
               ingredients={["mozzarella", "pepperoni", "orégano", "pimienta negra"]}
               img={peperoniImg}
             />
