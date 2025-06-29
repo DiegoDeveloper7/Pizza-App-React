@@ -13,13 +13,6 @@ function App() {
     <Header />
      <main>
       {/* <Home /> */}
-        <button
-    className="btn btn-success my-4"
-    data-bs-toggle="modal"
-    data-bs-target="#registerModal"
-  >
-    Abrir Registro
-  </button>
       <Register/>
       </main>
     <Footer />

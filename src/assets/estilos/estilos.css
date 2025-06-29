@@ -3,7 +3,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: grey;
+  background-color:rgb(30, 30, 30);
 }
 
 #root {
@@ -84,6 +84,67 @@ main {
   padding: 0 10px 49px 10px;
 
 }
+
+
+
+
+/* Fondo azul rey al contenedor */
+.form-container {
+  -background-color: #4169E1; /* azul más claro compatible con gris oscuro */
+  height: 500px;             /* altura fija más razonable */
+  width: 100%;               /* ancho completo del contenedor */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.form-container h2 {
+  font-size: 1.5rem;
+  
+}
+/* Formulario en sí */
+.form-box {
+  background-color:#4169E1; /* blanco translúcido suave */
+  padding: 2rem;
+  width: 100%;
+  max-width: 450px; /* control del ancho del formulario */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo de los campos input */
+.input-field {
+  background-color: #e8f0fe;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease;
+ 
+}
+
+.input-field:focus {
+  border-color: #39ff14;
+  box-shadow: 0 0 0 0.2rem rgba(57, 255, 20, 0.25);
+}
+
+/* Botón verde fosforescente */
+.submit-btn {
+  background-color: #39ff14;
+  color: #000;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #2eea0c;
+  color: #fff;
+}
+
+
+
+
+
+
 
 /* BLOQUE DEL FOOTER */
 

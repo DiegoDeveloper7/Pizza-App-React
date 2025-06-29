@@ -1,6 +1,8 @@
 // Importamos React y useState
 import React, { useState } from 'react';
 
+import Swal from 'sweetalert2';
+
 // Componente funcional Register
 export const Register = () => {
 
@@ -14,23 +16,41 @@ export const Register = () => {
     e.preventDefault(); // Evita el comportamiento por defecto del formulario
 
     // Validaciones:
-    if (!email || !password || !confirmPassword) {
-      alert("❌ Los campos no pueden estar vacíos");
-      return;
-    }
 
-    if (password.length < 6) {
-      alert("❌ La contraseña debe tener al menos 6 caracteres");
-      return;
-    }
+if (!email || !password || !confirmPassword) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Campos vacíos',
+      text: 'Debes completar todos los campos.',
+    });
+    return;
+  }
 
-    if (password !== confirmPassword) {
-      alert("❌ Las contraseñas no coinciden");
-      return;
-    }
+  if (password.length < 6) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Contraseña muy corta',
+      text: 'La contraseña debe tener al menos 6 caracteres.',
+    });
+    return;
+  }
 
-    // Si todo es correcto
-    alert("✅ ¡Datos enviados correctamente!");
+  if (password !== confirmPassword) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Contraseñas no coinciden',
+      text: 'Verifica que las contraseñas sean iguales.',
+    });
+    return;
+  }
+
+  // Si pasa todas las validaciones
+  Swal.fire({
+    icon: 'success',
+    title: '¡Registro exitoso!',
+    text: 'Tus datos han sido enviados correctamente.',
+  });
+
 
     // Limpiar los campos
     setEmail('');
@@ -39,68 +59,23 @@ export const Register = () => {
   };
 
   return (
-    // Modal de Bootstrap
-    <div className="modal fade" id="registerModal" tabIndex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
-      <div className="modal-dialog">
-        <div className="modal-content">
-
-          {/* Header del modal */}
-          <div className="modal-header">
-            <h5 className="modal-title" id="registerModalLabel">Formulario de Registro</h5>
-            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-          </div>
-
-          {/* Cuerpo del modal con el formulario */}
-          <div className="modal-body">
-
-            {/* Texto de bienvenida */}
-            <p className="text-center">Ingresa los datos del formulario</p>
-
-            {/* Formulario */}
-            <form onSubmit={handleSubmit} className="text-center">
-
-              {/* Campo de email */}
-              <div className="mb-3">
-                <input
-                  type="email"
-                  className="form-control"
-                  placeholder="Correo electrónico"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-
-              {/* Campo de contraseña */}
-              <div className="mb-3">
-                <input
-                  type="password"
-                  className="form-control"
-                  placeholder="Contraseña"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-
-              {/* Campo de confirmar contraseña */}
-              <div className="mb-3">
-                <input
-                  type="password"
-                  className="form-control"
-                  placeholder="Confirmar contraseña"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                />
-              </div>
-
-              {/* Botón de enviar */}
-              <button type="submit" className="btn btn-primary">
-                Enviar datos
-              </button>
-            </form>
-          </div>
-
+        <div className="form-container container py-5">
+    <form onSubmit={handleSubmit} className="form-box">
+        <h2 className="text-center mb-5 text-white ">Ingresa los datos del formulario</h2>
+        <div className="mb-3">
+          <label className="form-label text-white">Email</label>
+          <input type="email" className="form-control input-field" value={email} onChange={(e) => setEmail(e.target.value)} />
         </div>
-      </div>
+        <div className="mb-3">
+          <label className="form-label text-white">Contraseña</label>
+          <input type="password" className="form-control input-field" value={password} onChange={(e) => setPassword(e.target.value)} />
+        </div>
+        <div className="mb-4">
+          <label className="form-label text-white">Confirmar Contraseña</label>
+          <input type="password" className="form-control input-field" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+        </div>
+        <button type="submit" className="btn submit-btn w-100">Enviar Datos</button>
+      </form>
     </div>
   );
 };
