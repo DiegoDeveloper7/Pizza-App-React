@@ -58,7 +58,7 @@ export const Navbar = () => {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link px-3" href="#">
+                <a className="nav-link px-3" data-bs-toggle="modal" href="#registerModal">   {/* Se agrego conexion modal form register*/}
                   <i className="fas fa-user-plus me-1"></i> Register
                 </a>
               </li>
