@@ -4,6 +4,7 @@ import { Home } from './components/Home';
 import { Footer } from './components/Footer';
 
 import { Register } from './components/Register';
+import { Login } from './components/Login';
 
 function App() {
 
@@ -13,7 +14,8 @@ function App() {
     <Header />
      <main>
       {/* <Home /> */}
-      <Register/>
+      {/* <Register/>*/}
+          <Login/>
       </main>
     <Footer />
   </div>

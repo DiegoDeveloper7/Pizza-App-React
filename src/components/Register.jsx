@@ -49,6 +49,9 @@ if (!email || !password || !confirmPassword) {
     icon: 'success',
     title: '¡Registro exitoso!',
     text: 'Tus datos han sido enviados correctamente.',
+    confirmButtonColor: '#28a745', // verde fosforescente
+    background: '#1e3a8a',          // fondo azul rey
+    color: '#fff'                   // texto blanco
   });
 
 
