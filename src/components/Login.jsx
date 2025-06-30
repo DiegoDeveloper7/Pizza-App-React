@@ -14,7 +14,7 @@ export const Login = () => {
       return Swal.fire({
         icon: "error",
         title: "Campos incompletos",
-        text: "Debes llenar todos los campos",
+        text: "Debes ingresar tu correo y contraseña",
       });
     }
 
@@ -26,11 +26,14 @@ export const Login = () => {
       });
     }
 
-    // Si todo está correcto
     Swal.fire({
       icon: "success",
       title: "Inicio de sesión exitoso",
-      text: "Bienvenido de vuelta",
+      text: "Bienvenido a la Pizzeria MamaMia",
+      confirmButtonColor: '#39ff14', 
+      background: '#4169E1',         
+      color: '#39ff14'   
+
     });
 
     // Limpiar campos
@@ -42,8 +45,9 @@ export const Login = () => {
     <div className="form-container-login container py-5">  {/* form-container-login container clase para estilos propoios considerar para Register*/}
      
       <form onSubmit={handleSubmit} className="mx-auto form-body-login">     {/* form-body-login modifica estilos particulares considerar para Register*/}
-         <h2 className="text-center mb-4">Ingresa los datos para Iniciar Sesión</h2>
+         <h2 className="text-center mb-5">Ingresa tus datos para Iniciar Sesión</h2>
         <div className="mb-3">
+           <i className="fas fa-pizza-slice me-2"></i>
           <label>Email</label>
           <input
             type="email"
@@ -54,7 +58,8 @@ export const Login = () => {
           />
         </div>
 
-        <div className="mb-3">
+        <div className="mb-5">
+           <i className="fas fa-pizza-slice me-2"></i>
           <label>Contraseña</label>
           <input
             type="password"
@@ -65,7 +70,7 @@ export const Login = () => {
           />
         </div>
 
-        <button type="submit" className="btn btn-success w-100 btn-hover">
+        <button type="submit" className="btn  w-100 btn-hover btnLoginPro">
           Iniciar sesión
         </button>
       </form>

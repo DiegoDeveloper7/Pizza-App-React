@@ -161,16 +161,24 @@ main {
   border-radius: 10px;
   box-shadow: 0 0 15px 5px rgba(65, 105, 225, 0.8);
   color: #2eea0c;
+  font-weight: 700;
 }
 
 .form-body-login h2 {
    font-size: 1.2rem;
    color: #00ff6a;
+   font-weight: 800;
+   font-style: italic;
 }
 
-.btn-hover:hover {
-  background-color: #00ff6a !important; /* verde fosforescente */
-  color: black !important;
+.btnLoginPro {
+  background-color: green;
+  color: white;
+}
+
+.btnLoginPro:hover {
+  background-color: #00ff6a;
+  color: green ;
   transition: 0.3s;
 }
 
