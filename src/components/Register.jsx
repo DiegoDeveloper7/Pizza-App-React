@@ -26,11 +26,14 @@ if (!email || !password || !confirmPassword) {
     return;
   }
 
-  if (password.length < 6) {
+  // Validación avanzada de contraseña
+  const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{6,10}$/;
+
+  if (!passwordRegex.test(password)) {
     Swal.fire({
       icon: 'error',
       title: 'Contraseña muy corta',
-      text: 'La contraseña debe tener al menos 6 caracteres.',
+      text: 'La contraseña debe tener al entre 6 y 10 caracteres, al menos un numero, y un caracter especial.',
     });
     return;
   }
@@ -62,23 +65,32 @@ if (!email || !password || !confirmPassword) {
   };
 
   return (
-        <div className="form-container container py-5">
-    <form onSubmit={handleSubmit} className="form-box">
-        <h2 className="text-center mb-5 text-white ">Ingresa los datos del formulario</h2>
+
+   <div className="form-container-register container py-5 mt-5">
+
+    <form onSubmit={handleSubmit} className="form-body-register">
+        <h2 className="text-center mb-5  ">Ingresa los datos del formulario</h2>
+
         <div className="mb-3">
-          <label className="form-label text-white">Email</label>
-          <input type="email" className="form-control input-field" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <label className="form-label ">Email</label>
+          <input type="email" className="form-control input-field" placeholder="Ingresa tu mail" value={email} onChange={(e) => setEmail(e.target.value)} />
         </div>
+
         <div className="mb-3">
-          <label className="form-label text-white">Contraseña</label>
-          <input type="password" className="form-control input-field" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <label className="form-label ">Contraseña</label>
+          <input type="password" className="form-control input-field"  placeholder="Ingresa contraseña" value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
+
         <div className="mb-4">
-          <label className="form-label text-white">Confirmar Contraseña</label>
-          <input type="password" className="form-control input-field" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+          <label className="form-label ">Confirmar Contraseña</label>
+          <input type="password" className="form-control input-field" placeholder="Confirma tu contraseña" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
         </div>
+
         <button type="submit" className="btn submit-btn w-100">Enviar Datos</button>
+
       </form>
-    </div>
+
+  </div>
+
   );
 };

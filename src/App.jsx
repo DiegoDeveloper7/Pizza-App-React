@@ -14,8 +14,8 @@ function App() {
     <Header />
      <main>
       {/* <Home /> */}
-      {/* <Register/>*/}
-          <Login/>
+      <Register/>
+        {/* <Login/>*/}  
       </main>
     <Footer />
   </div>

@@ -90,7 +90,7 @@ main {
 /*** BLOQUE DEL COMPONENTE REGISTER ***/
 
 /* Fondo azul rey al contenedor */
-.form-container {
+.form-container-register {
   height: 500px;             /* altura fija más razonable */
   width: 100%;               /* ancho completo del contenedor */
   display: flex;
@@ -100,18 +100,20 @@ main {
   padding: 2rem;
 }
 
-.form-container h2 {
+.form-container-register h2 {
   font-size: 1.5rem;
+  color: #39FF14;
   
 }
 /* Formulario en sí */
-.form-box {
+.form-body-register {
   background-color:#4169E1; /* blanco translúcido suave */
   padding: 2rem;
   width: 100%;
   max-width: 450px; /* control del ancho del formulario */
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  color: #39ff14;
 }
 
 /* Estilo de los campos input */
