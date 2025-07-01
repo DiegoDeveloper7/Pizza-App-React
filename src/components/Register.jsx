@@ -33,7 +33,7 @@ if (!email || !password || !confirmPassword) {
     Swal.fire({
       icon: 'error',
       title: 'Contraseña muy corta',
-      text: 'La contraseña debe tener al entre 6 y 10 caracteres, al menos un numero, y un caracter especial.',
+      text: 'La contraseña debe tener al entre 6 y 10 caracteres, una letra mayúscula, un número, y un caracter especial',
     });
     return;
   }

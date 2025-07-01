@@ -18,11 +18,14 @@ export const Login = () => {
       });
     }
 
-    if (password.length < 6) {
+  // Validación avanzada de la contraseña
+  const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{6,10}$/;
+
+    if (!passwordRegex.test(password)) {
       return Swal.fire({
         icon: "warning",
         title: "Contraseña inválida",
-        text: "La contraseña debe tener al menos 6 caracteres",
+        text: "La contraseña debe tener al entre 6 y 10 caracteres, una letra mayúscula, un número, y un caracter especial",
       });
     }
 
