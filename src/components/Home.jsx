@@ -1,39 +1,30 @@
 import { TarjetaPizza } from "./tarjetaPizza"
-import napolitanaImg from '../assets/imgs/napolitana.jpg';
-import españolaImg from '../assets/imgs/española.jpg';
-import peperoniImg from '../assets/imgs/peperoni.webp';
+import { pizzas } from "../helpers/pizzas";
+
+//import napolitanaImg from '../assets/imgs/napolitana.jpg';
+//import españolaImg from '../assets/imgs/española.jpg';
+//import peperoniImg from '../assets/imgs/peperoni.webp';
 
 export const Home = () => {
   return (
     <>
-      <div  className="container my-1 ">
-        <div id="home" className="row g-5 ">
-          <div className="col-md-4">
-            <TarjetaPizza
-              name="Pizza Napolitana"
-              price={9000}
-              ingredients={["mozzarella", "tomates", "jamón", "orégano"]}
-              img={napolitanaImg}
-            />
-          </div>
-          <div className="col-md-4">
-            <TarjetaPizza
-              name="Pizza Española"
-              price={8000}
-              ingredients={["mozzarella", "gorgonzola", "parmesano", "aceitunas"]}
-              img={españolaImg}
-            />
-          </div>
-          <div className="col-md-4">
-            <TarjetaPizza
-              name="Pizza Pepperoni"
-              price={7000}
-              ingredients={["mozzarella", "pepperoni", "orégano", "pimienta negra"]}
-              img={peperoniImg}
-            />
-          </div>
+     <div className="container-fluid my-1">
+ <div id="home" className="row gx-1 gy-4">
+    {
+      pizzas.map(pizza => (
+        <div  key={pizza.id} className="col-lg-4">
+          <TarjetaPizza
+            name={pizza.name}
+            price={pizza.price}
+            ingredients={pizza.ingredients}
+            description={pizza.desc}
+            img={pizza.img}
+          />
         </div>
-      </div>
+      ))
+    }
+  </div>
+</div>
     </>
   )
 }

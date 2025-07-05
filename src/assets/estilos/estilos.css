@@ -20,7 +20,7 @@ html, body {
 }
 
 main {
-  flex: 1; /* hace que el contenido principal se expanda AFETACTA LA ETIQUETA main App.jsx */
+  flex: 1; /* hace que el contenido principal se expanda AFECCTA LA ETIQUETA main App.jsx */
   display: flex;
   flex-direction: column;
 }
@@ -45,7 +45,7 @@ main {
 }
 
 
-/* BLOQUE DEL HEADER */
+/*** BLOQUE DEL COMPONENTE HEADER ***/
 
 .header-bg {
   background-image: url('../imgs/Header.jpg');
@@ -55,7 +55,17 @@ main {
   min-height: 300px; /* puedes ajustar este valor */
 }
 
-/*** BLOQUE DEL LAS CARD ***/
+
+
+/*** BLOQUE DEL COMPONENTE TARJETAPIZZA ***/
+
+.card {
+  width: 500px; /* Ancho fijo de la tarjeta */
+  margin: 20px auto; /* Centrado horizontal y margen vertical */
+  background-color: #2c3e50; /* Fondo oscuro para la tarjeta */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+}
 
 /* Imagen fija y recortada */
 .card-img-top {
@@ -72,12 +82,16 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+ 
   max-height: 700px;
-   background-color: #39FF14; /* Verde fosforescente */
-   font-size: 1rem;
+  background-color: #39FF14; /* Verde fosforescente */
+  font-size: 1rem;
 }
 
-/* BLOQUE DEL LAS DEL HOME */
+
+
+
+/* BLOQUE DEL COMPONENTE HOME */
 
 #home {
   margin-top: 60px;
@@ -85,6 +99,7 @@ main {
   padding: 0 10px 49px 10px;
 
 }
+
 
 
 /*** BLOQUE DEL COMPONENTE REGISTER ***/
