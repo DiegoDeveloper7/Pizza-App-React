@@ -12,7 +12,7 @@ export const Home = () => {
  <div id="home" className="row gx-1 gy-4">
     {
       pizzas.map(pizza => (
-        <div  key={pizza.id} className="col-lg-4 mt-5">
+        <div  key={pizza.id} className="col-lg-4 mt-5"> {/* se coloco la propiedad pizza.id en este div por sintaxis de react padre e hijos*/}
           <TarjetaPizza
             name={pizza.name}
             price={pizza.price}
