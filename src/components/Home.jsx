@@ -1,4 +1,4 @@
-import { TarjetaPizza } from "./tarjetaPizza"
+import { TarjetaPizza } from "./TarjetaPizza";
 import { pizzas } from "../helpers/pizzas";
 
 //import napolitanaImg from '../assets/imgs/napolitana.jpg';
@@ -12,7 +12,7 @@ export const Home = () => {
  <div id="home" className="row gx-1 gy-4">
     {
       pizzas.map(pizza => (
-        <div  key={pizza.id} className="col-lg-4">
+        <div  key={pizza.id} className="col-lg-4 mt-5">
           <TarjetaPizza
             name={pizza.name}
             price={pizza.price}

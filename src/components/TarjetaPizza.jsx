@@ -3,15 +3,15 @@ export const TarjetaPizza = ({ img, name, description, price, ingredients }) => 
     
   return (
 
-  <div className="card h-100 shadow border-0">
+  <div className="card h-100 shadow border-0 ">
 
   <img src={img} className="card-img-top" alt={name} />
 
-  <div className="card-body d-flex flex-column justify-content-between">
+  <div className="card-body d-flex flex-column justify-content-between mt-1">
     
     <h5 className="fs-5 fw-bold mb-1 text-center">{name}</h5>
 
-   <p className="card-text lh-sm small text-center description">{ description }</p>
+   <p className="card-text lh-sm small text-center description">{ description }</p> {/* VER SI SERA NECESARIA CLASE DESCIPRTION */}
     
     {/* Ingredientes */}
     <div className="text-center mb-2">
@@ -44,7 +44,7 @@ export const TarjetaPizza = ({ img, name, description, price, ingredients }) => 
    </div>
 
   </div>
-  
+
 </div>
 
   )
