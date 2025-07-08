@@ -81,7 +81,7 @@ const formattedTotal = total.toLocaleString("es-CL", {
 
       {/* Botón Pagar */}
       <div className="text-center mt-3">
-        <button className="btn btn-primary btn-lg">Pagar</button>
+        <button className="btn  btn-lg button-pay">Pagar</button>
       </div>
     </div>
   );

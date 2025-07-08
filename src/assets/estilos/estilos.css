@@ -216,6 +216,20 @@ main {
   font-size: 1.2rem;
 }
 
+.button-pay {
+  background-color: green;
+  color: white;
+  transition: background-color 0.3s ease, color 0.3s ease
+}
+
+.button-pay:hover {
+  background-color: #2eea0c;
+  color: green;
+  transition: 0.3s;
+}
+
+
+
 /* BLOQUE DEL FOOTER */
 
 .bg-negro-puro {
