@@ -2,6 +2,7 @@ import { Navbar } from './components/Navbar';
 import { Header } from './components/Header';
 import { Home } from './components/Home';
 import { Footer } from './components/Footer';
+import { Pizza } from './components/Pizza';
 
 //import { Register } from './components/Register';
 //import { Login } from './components/Login';
@@ -15,13 +16,15 @@ function App() {
     <Header />
      <main>
 
-       <Home /> 
+      {/*<Home />  */} 
 
       {/*<Register/>*/}
 
       {/* <Login/> */ } 
        
      {/*  <Cart /> */} 
+
+      <Pizza /> {/* Componente para mostrar una pizza específica */}
 
       </main>
     <Footer />
