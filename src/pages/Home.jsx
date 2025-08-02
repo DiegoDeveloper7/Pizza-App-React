@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { TarjetaPizza } from "./TarjetaPizza";
+import { TarjetaPizza } from "../components/TarjetaPizza";
 
 //import { pizzas } from "../helpers/pizzas";
 //import napolitanaImg from '../assets/imgs/napolitana.jpg';

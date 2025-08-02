@@ -1,9 +1,10 @@
 import { Navbar } from './components/Navbar';
 import { Header } from './components/Header';
-import { Home } from './components/Home';
+import { Home } from './pages/Home';
 import { Footer } from './components/Footer';
-import { Pizza } from './components/Pizza';
-import { NotFound } from './components/notFound';
+import { Pizza } from './pages/Pizza';
+import { NotFound } from './pages/notFound';
+import { Profile } from './pages/profile';
 
 //import { Register } from './components/Register';
 //import { Login } from './components/Login';
@@ -27,7 +28,9 @@ function App() {
 
     {/*   <Pizza /> Componente para mostrar una pizza específica desde el backend */}
 
-     <NotFound/>
+     {/* <NotFound/> */}
+
+      <Profile />
  
       </main>
     <Footer />
