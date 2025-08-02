@@ -3,6 +3,7 @@ import { Header } from './components/Header';
 import { Home } from './components/Home';
 import { Footer } from './components/Footer';
 import { Pizza } from './components/Pizza';
+import { NotFound } from './components/notFound';
 
 //import { Register } from './components/Register';
 //import { Login } from './components/Login';
@@ -24,8 +25,10 @@ function App() {
        
      {/*  <Cart /> */} 
 
-      <Pizza /> {/* Componente para mostrar una pizza específica */}
+    {/*   <Pizza /> Componente para mostrar una pizza específica desde el backend */}
 
+     <NotFound/>
+ 
       </main>
     <Footer />
   </div>
