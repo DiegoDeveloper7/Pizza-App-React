@@ -1,41 +1,42 @@
+// App.jsx
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import { Navbar } from './components/Navbar';
 import { Header } from './components/Header';
-import { Home } from './pages/Home';
 import { Footer } from './components/Footer';
-import { Pizza } from './pages/Pizza';
-import { NotFound } from './pages/notFound';
-import { Profile } from './pages/profile';
 
-//import { Register } from './components/Register';
-//import { Login } from './components/Login';
-//import { Cart } from './components/Cart';
+// Páginas desde la carpeta "pages"
+import { Home } from './pages/Home';
+import { Register } from './pages/Register';
+import { Login } from './pages/Login';
+import { Cart } from './pages/Cart';
+import { Pizza } from './pages/Pizza';
+import { Profile } from './pages/Profile';
+import { NotFound } from './pages/NotFound';
 
 function App() {
-
   return (
-  <div className="app-container">
-    <Navbar />
-    <Header />
-     <main>
+    <BrowserRouter>
+      <div className="app-container">
+        <Navbar />
+        <Header />
 
-      {/*<Home />  */} 
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/pizza" element={<Pizza />} /> {/* temporalmente */}
+            <Route path="*" element={<NotFound />} /> {/* Página 404 */}
+          </Routes>
+        </main>
 
-      {/*<Register/>*/}
-
-      {/* <Login/> */ } 
-       
-     {/*  <Cart /> */} 
-
-    {/*   <Pizza /> Componente para mostrar una pizza específica desde el backend */}
-
-     {/* <NotFound/> */}
-
-      <Profile />
- 
-      </main>
-    <Footer />
-  </div>
-  )
+        <Footer />
+      </div>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

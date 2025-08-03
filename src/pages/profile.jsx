@@ -1,9 +1,8 @@
-
 export const Profile = () => {
 
   const user = {
     name: 'Steve Jobs',
-    email: 'SteveDG@correo.com'
+    email: 'SteveDG@apple.com'
   }
 
   const handleLogout = () => alert('Sesion Cerrada!')
