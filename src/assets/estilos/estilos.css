@@ -228,9 +228,20 @@ main {
   transition: 0.3s;
 }
 
+/*** BLOQUE DEL COMPONENTE NOT FOUND ***/
+
+.textcolordg {
+  color: #39ff14;
+ 
+}
+
+.textcolordg i {
+  font-size: 2rem;
+}
 
 
-/* BLOQUE DEL FOOTER */
+
+  /* BLOQUE DEL FOOTER */
 
 .bg-negro-puro {
   background-color: black;
