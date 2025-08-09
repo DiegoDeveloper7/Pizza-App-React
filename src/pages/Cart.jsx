@@ -1,45 +1,24 @@
-import { useState } from "react";
-import { pizzaCart } from "../helpers/pizzas";
+import { useCart } from "../context/CartProvider"; // 🆕 Importar hook
 
 export const Cart = () => {
-  const [cart, setCart] = useState(pizzaCart);
+  // 🆕 Usar el contexto en vez de useState local
+  const { cart, increaseCount, decreaseCount, total } = useCart();
 
-  // Función para aumentar cantidad
-  const increaseCount = (id) => {
-    setCart((prevCart) =>
-      prevCart.map((pizza) =>
-        pizza.id === id ? { ...pizza, count: pizza.count + 1 } : pizza
-      )
-    );
-  };
-
-  // Función para disminuir cantidad
-  const decreaseCount = (id) => {
-    setCart((prevCart) =>
-      prevCart
-        .map((pizza) =>
-          pizza.id === id ? { ...pizza, count: pizza.count - 1 } : pizza
-        )
-        .filter((pizza) => pizza.count > 0) // eliminar si count llega a 0
-    );
-  };
-
-  // Calcular total
-  const total = cart.reduce((acc, item) => acc + item.price * item.count, 0);
-
-  // ✅ Nueva constante con formato CLP
-const formattedTotal = total.toLocaleString("es-CL", {
-  style: "currency",
-  currency: "CLP",
-});
+  // ✅ Formateo del total
+  const formattedTotal = total.toLocaleString("es-CL", {
+    style: "currency",
+    currency: "CLP",
+  });
 
   return (
     <div className="container py-4">
       <h2 className="text-center mb-4 tituloCart">🛒 Detalles del pedido</h2>
 
       {cart.map((pizza) => (
-        <div key={pizza.id} className="d-flex align-items-center justify-content-between border rounded p-3 mb-3 shadow-sm bodyCart">
-
+        <div
+          key={pizza.id}
+          className="d-flex align-items-center justify-content-between border rounded p-3 mb-3 shadow-sm bodyCart"
+        >
           {/* Imagen */}
           <img
             src={pizza.img}
@@ -52,31 +31,37 @@ const formattedTotal = total.toLocaleString("es-CL", {
           <h5 className="mb-0 text-capitalize">{pizza.name}</h5>
 
           {/* Precio */}
-           <p className="mb-0 fw-bold"> {pizza.price.toLocaleString("es-CL", { style: "currency", currency: "CLP" })} </p>
+          <p className="mb-0 fw-bold">
+            {pizza.price.toLocaleString("es-CL", {
+              style: "currency",
+              currency: "CLP",
+            })}
+          </p>
 
           {/* Contador */}
           <div className="d-flex align-items-center">
             <button
               className="btn btn-danger btn-sm me-2"
-              onClick={() => decreaseCount(pizza.id)}
+              onClick={() => decreaseCount(pizza.id)} // 🆕 Ahora usa contexto
             >
               -
             </button>
             <span className="fw-bold">{pizza.count}</span>
             <button
               className="btn btn-success btn-sm ms-2"
-              onClick={() => increaseCount(pizza.id)}
+              onClick={() => increaseCount(pizza.id)} // 🆕 Ahora usa contexto
             >
               +
             </button>
           </div>
         </div>
-
       ))}
 
       {/* Total */}
       <div className="text-end mt-4 textoTotal">
-       <h4>Total: <span className="textoTotal">{formattedTotal}</span></h4>
+        <h4>
+          Total: <span className="textoTotal">{formattedTotal}</span>
+        </h4>
       </div>
 
       {/* Botón Pagar */}

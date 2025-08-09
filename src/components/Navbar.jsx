@@ -1,13 +1,17 @@
 import { Link } from "react-router-dom";
+import { useCart } from "../context/CartProvider"; // 🆕 Importar hook
 
 export const Navbar = () => {
-  const total = 25000;
   const token = false;
+  const { total } = useCart(); // 🆕 Obtener total del contexto
 
   return (
-    <nav id="navbar" className="navbar navbar-expand-lg navbar-dark sticky-top" style={{ backgroundColor: "black" }}>
+    <nav
+      id="navbar"
+      className="navbar navbar-expand-lg navbar-dark sticky-top"
+      style={{ backgroundColor: "black" }}
+    >
       <div className="container-fluid">
-
         {/* Marca */}
         <Link className="navbar-brand fw-bold fs-3 me-auto ms-5" to="/">
           <i className="fas fa-pizza-slice me-2"></i>
@@ -28,7 +32,10 @@ export const Navbar = () => {
         </button>
 
         {/* Contenedor colapsable */}
-        <div className="collapse navbar-collapse justify-content-between align-items-center" id="navbarNav">
+        <div
+          className="collapse navbar-collapse justify-content-between align-items-center"
+          id="navbarNav"
+        >
           <ul className="navbar-nav">
             <li className="nav-item">
               <Link className="nav-link px-3" to="/">
@@ -61,8 +68,7 @@ export const Navbar = () => {
                     <i className="fas fa-user-plus me-1"></i> Register
                   </Link>
                 </li>
-
-                  <li className="nav-item">
+                <li className="nav-item">
                   <Link className="nav-link px-3" to="/Profile">
                     <i className="fas fa-user-plus me-1"></i> Profile
                   </Link>
@@ -77,7 +83,12 @@ export const Navbar = () => {
             className="btn btn-outline-light d-flex align-items-center ms-auto btn-price btn-success me-5 mt-3 mt-lg-0"
           >
             <i className="fas fa-shopping-cart me-2"></i>
-            Total: {total.toLocaleString("es-CL", { style: "currency", currency: "CLP" })}
+            Total:{" "}
+            {total.toLocaleString("es-CL", {
+              style: "currency",
+              currency: "CLP",
+            })}{" "}
+            {/* 🆕 total desde contexto */}
           </Link>
         </div>
       </div>

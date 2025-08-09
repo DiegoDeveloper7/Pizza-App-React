@@ -1,6 +1,8 @@
 // App.jsx
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+import { CartProvider } from "./context/CartProvider";
+
 import { Navbar } from './components/Navbar';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -16,6 +18,8 @@ import { NotFound } from './pages/NotFound';
 
 function App() {
   return (
+
+    <CartProvider>
     <BrowserRouter>
       <div className="app-container">
         <Navbar />
@@ -36,6 +40,8 @@ function App() {
         <Footer />
       </div>
     </BrowserRouter>
+    </CartProvider>
+
   );
 }
 
