@@ -1,6 +1,6 @@
 // context/CartProvider.jsx
 import { createContext, useContext, useReducer } from "react";
-import { pizzaCart } from "../helpers/pizzas";
+import { pizzaCart } from "../helpers/pizzas"; // ← Tu arreglo inicial
 
 // Estado inicial
 const initialState = {
@@ -11,14 +11,23 @@ const initialState = {
 const cartReducer = (state, action) => {
   switch (action.type) {
     case "INCREASE":
-      return {
-        ...state,
-        cart: state.cart.map((pizza) =>
-          pizza.id === action.payload
-            ? { ...pizza, count: pizza.count + 1 }
-            : pizza
-        ),
-      };
+      // Si la pizza no existe en el carrito, la agregamos con count 1
+      const pizzaExists = state.cart.find((pizza) => pizza.id === action.payload.id);
+      if (pizzaExists) {
+        return {
+          ...state,
+          cart: state.cart.map((pizza) =>
+            pizza.id === action.payload.id
+              ? { ...pizza, count: pizza.count + 1 }
+              : pizza
+          ),
+        };
+      } else {
+        return {
+          ...state,
+          cart: [...state.cart, { ...action.payload, count: 1 }],
+        };
+      }
 
     case "DECREASE":
       return {
@@ -55,7 +64,7 @@ export const CartProvider = ({ children }) => {
       value={{
         cart: state.cart,
         total,
-        increaseCount: (id) => dispatch({ type: "INCREASE", payload: id }),
+        increaseCount: (pizza) => dispatch({ type: "INCREASE", payload: pizza }),
         decreaseCount: (id) => dispatch({ type: "DECREASE", payload: id }),
       }}
     >
