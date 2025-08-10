@@ -1,19 +1,20 @@
 // context/CartProvider.jsx
 import { createContext, useContext, useReducer } from "react";
-import { pizzaCart } from "../helpers/pizzas"; // ← Tu arreglo inicial
+// import { pizzaCart } from "../helpers/pizzas"; // ← Ya no lo usamos para inicializar el carrito
 
-// Estado inicial
+// Estado inicial: carrito vacío
 const initialState = {
-  cart: pizzaCart,
+  cart: [],
 };
 
 // Reducer para manejar acciones
 const cartReducer = (state, action) => {
   switch (action.type) {
-    case "INCREASE":
-      // Si la pizza no existe en el carrito, la agregamos con count 1
+    case "INCREASE": {
       const pizzaExists = state.cart.find((pizza) => pizza.id === action.payload.id);
+
       if (pizzaExists) {
+        // Si ya existe, incrementa
         return {
           ...state,
           cart: state.cart.map((pizza) =>
@@ -23,11 +24,13 @@ const cartReducer = (state, action) => {
           ),
         };
       } else {
+        // Si no existe, agregarla con count 1
         return {
           ...state,
           cart: [...state.cart, { ...action.payload, count: 1 }],
         };
       }
+    }
 
     case "DECREASE":
       return {

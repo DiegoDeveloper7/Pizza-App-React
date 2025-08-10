@@ -1,10 +1,8 @@
-import { useCart } from "../context/CartProvider"; // 🆕 Importar hook
+import { useCart } from "../context/CartProvider";
 
 export const Cart = () => {
-  // 🆕 Usar el contexto en vez de useState local
   const { cart, increaseCount, decreaseCount, total } = useCart();
 
-  // ✅ Formateo del total
   const formattedTotal = total.toLocaleString("es-CL", {
     style: "currency",
     currency: "CLP",
@@ -19,7 +17,6 @@ export const Cart = () => {
           key={pizza.id}
           className="d-flex align-items-center justify-content-between border rounded p-3 mb-3 shadow-sm bodyCart"
         >
-          {/* Imagen */}
           <img
             src={pizza.img}
             alt={pizza.name}
@@ -27,10 +24,8 @@ export const Cart = () => {
             style={{ width: "80px", height: "80px", objectFit: "cover" }}
           />
 
-          {/* Nombre */}
           <h5 className="mb-0 text-capitalize">{pizza.name}</h5>
 
-          {/* Precio */}
           <p className="mb-0 fw-bold">
             {pizza.price.toLocaleString("es-CL", {
               style: "currency",
@@ -38,18 +33,26 @@ export const Cart = () => {
             })}
           </p>
 
-          {/* Contador */}
           <div className="d-flex align-items-center">
             <button
               className="btn btn-danger btn-sm me-2"
-              onClick={() => decreaseCount(pizza.id)} // 🆕 Ahora usa contexto
+              onClick={() => decreaseCount(pizza.id)}
             >
               -
             </button>
             <span className="fw-bold">{pizza.count}</span>
             <button
               className="btn btn-success btn-sm ms-2"
-              onClick={() => increaseCount(pizza.id)} // 🆕 Ahora usa contexto
+              onClick={() =>
+                increaseCount({
+                  id: pizza.id,
+                  img: pizza.img,
+                  name: pizza.name,
+                  description: pizza.description,
+                  price: pizza.price,
+                  ingredients: pizza.ingredients,
+                })
+              }
             >
               +
             </button>
@@ -57,14 +60,12 @@ export const Cart = () => {
         </div>
       ))}
 
-      {/* Total */}
       <div className="text-end mt-4 textoTotal">
         <h4>
           Total: <span className="textoTotal">{formattedTotal}</span>
         </h4>
       </div>
 
-      {/* Botón Pagar */}
       <div className="text-center mt-3">
         <button className="btn  btn-lg button-pay">Pagar</button>
       </div>
