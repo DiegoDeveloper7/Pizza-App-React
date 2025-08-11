@@ -1,19 +1,16 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { useApi } from "../context/ApiContext"; // ✅ Importamos el contexto
 
 export const Pizza = () => {
   const [pizza, setPizza] = useState(null); // Estado para guardar la pizza
+  const { fetchPizzaById } = useApi(); // ✅ Función para obtener pizza por ID
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5001/api/pizzas/p001") // Petición al backend
-      .then((res) => {
-        setPizza(res.data); // 📦 Guardamos la pizza en el estado
-      })
-      .catch((error) => {
-        console.error("Error al obtener la pizza:", error);
-      });
-  }, []); //  Se ejecuta una sola vez al montar
+    // Simulación de ID fijo, podrías usar useParams() si es ruta dinámica
+    fetchPizzaById("p001").then((data) => {
+      setPizza(data);
+    });
+  }, []);
 
   // Mientras se cargan los datos
   if (!pizza) {

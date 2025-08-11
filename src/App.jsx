@@ -2,6 +2,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { CartProvider } from "./context/CartProvider";
+import { ApiProvider } from "./context/ApiContext";
 
 import { Navbar } from './components/Navbar';
 import { Header } from './components/Header';
@@ -20,6 +21,7 @@ function App() {
   return (
 
     <CartProvider>
+       <ApiProvider>
     <BrowserRouter>
       <div className="app-container">
         <Navbar />
@@ -40,6 +42,7 @@ function App() {
         <Footer />
       </div>
     </BrowserRouter>
+    </ApiProvider>
     </CartProvider>
 
   );

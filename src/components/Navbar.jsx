@@ -73,6 +73,11 @@ export const Navbar = () => {
                     <i className="fas fa-user-plus me-1"></i> Profile
                   </Link>
                 </li>
+                  <li className="nav-item">
+                  <Link className="nav-link px-3" to="/pizza">
+                     <i className="fas fa-pizza-slice me-2"></i> Pizza
+                  </Link>
+                </li>
               </>
             )}
           </ul>

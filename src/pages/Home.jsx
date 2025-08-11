@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import Swal from "sweetalert2";
+import { useApi } from "../context/ApiContext"; // ✅ Importamos el hook del contexto
 import { TarjetaPizza } from "../components/TarjetaPizza";
 //import { pizzas } from "../helpers/pizzas";
 //import napolitanaImg from '../assets/imgs/napolitana.jpg';
@@ -8,23 +6,12 @@ import { TarjetaPizza } from "../components/TarjetaPizza";
 //import peperoniImg from '../assets/imgs/peperoni.webp';
 
 export const Home = () => {
-  const [pizzas, setPizzas] = useState([]);
+  const { pizzas, loading } = useApi(); // ✅ Obtenemos datos del contexto
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:5001/api/pizzas")
-      .then((res) => {
-        setPizzas(res.data); // ✅ Guardamos la data en el estado
-      })
-      .catch((error) => {
-        console.error("Error al obtener las pizzas:", error);
-        Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: "No se pudo cargar el listado de pizzas.",
-        });
-      });
-  }, []); // El array vacío asegura que esto corre solo una vez al montar
+  // Mientras carga
+  if (loading) {
+    return <p className="text-center">Cargando pizzas...</p>;
+  }
 
   return (
     <>
