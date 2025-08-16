@@ -1,7 +1,14 @@
 import { useCart } from "../context/CartProvider";
+import { useNavigate } from "react-router-dom"; // 🔹 Importamos useNavigate
 
 export const TarjetaPizza = ({ id, img, name, description, price, ingredients }) => {
-  const { increaseCount, decreaseCount } = useCart(); // ← Para manejar cantidades
+  const { increaseCount } = useCart(); // ← Ya NO usamos decreaseCount aquí
+  const navigate = useNavigate(); // 🔹 Inicializamos useNavigate
+
+  // 🔹 Función para manejar redirección a Pizza.jsx
+  const handleViewMore = () => {
+    navigate(`/pizza/${id}`); // redirige dinámicamente al detalle de la pizza
+  };
 
   return (
     <div className="card h-100 shadow border-0 ">
@@ -33,15 +40,15 @@ export const TarjetaPizza = ({ id, img, name, description, price, ingredients })
 
         {/* Botones */}
         <div className="d-flex justify-content-between mt-auto gap-3 btn-options">
-          {/* 🔹 Botón modificado: ahora DECREMENTA */}
+          {/* 🔹 Botón cambiado: ahora REDIRIGE en vez de eliminar */}
           <button
             className="btn btn-warning border-warning text-dark flex-fill py-2 see-more"
-            onClick={() => decreaseCount(id)}
+            onClick={handleViewMore}
           >
-            <i className="fas fa-minus me-2"></i> Eliminar
+            <i className="fas fa-eye me-2"></i> Ver más
           </button>
 
-          {/* 🔹 Botón modificado: ahora AGREGA */}
+          {/* 🔹 Botón de añadir al carrito se mantiene igual */}
           <button
             className="btn btn-success border-success text-white flex-fill py-2 add-to-cart"
             onClick={() => increaseCount({ id, img, name, description, price, ingredients })}

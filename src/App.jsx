@@ -34,7 +34,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/pizza" element={<Pizza />} /> {/* temporalmente */}
+           <Route path="/pizza/:id" element={<Pizza />} /> {/* ruta dinámica con id */}
             <Route path="*" element={<NotFound />} /> {/* Página 404 */}
           </Routes>
         </main>

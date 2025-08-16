@@ -1,16 +1,21 @@
 import { useEffect, useState } from "react";
 import { useApi } from "../context/ApiContext"; // ✅ Importamos el contexto
+import { useParams } from "react-router-dom";     // 🆕 1) Leer el id dinámico de la ruta
+import { useCart } from "../context/CartProvider"; // 🆕 2) Interactuar con el carrito
 
 export const Pizza = () => {
   const [pizza, setPizza] = useState(null); // Estado para guardar la pizza
-  const { fetchPizzaById } = useApi(); // ✅ Función para obtener pizza por ID
+  const { fetchPizzaById } = useApi();      // ✅ Función para obtener pizza por ID
+
+  const { id } = useParams();               // 🆕 Tomamos el :id desde la URL (/pizza/:id)
+  const { increaseCount, decreaseCount } = useCart(); // 🆕 Acciones del carrito
 
   useEffect(() => {
-    // Simulación de ID fijo, podrías usar useParams() si es ruta dinámica
-    fetchPizzaById("p001").then((data) => {
-      setPizza(data);
-    });
-  }, []);
+    // 🔄 Ahora usamos el id dinámico en vez de uno fijo
+    fetchPizzaById(id)
+      .then((data) => setPizza(data))
+      .catch((err) => console.error("Error al obtener la pizza:", err));
+  }, [id, fetchPizzaById]);
 
   // Mientras se cargan los datos
   if (!pizza) {
@@ -57,9 +62,30 @@ export const Pizza = () => {
             </h4>
           </div>
 
-          {/* Botón "Añadir al carrito" */}
-          <div className="d-flex justify-content-center mt-auto">
-            <button className="btn btn-success border-success text-white py-2 px-4">
+          {/* Botones "Eliminar" y "Añadir al carrito" */}
+          <div className="d-flex justify-content-between mt-auto gap-3">
+            {/* 🆕 3) Botón eliminar: actualiza carrito y navbar */}
+            <button
+              className="btn btn-warning border-warning text-dark flex-fill py-2"
+              onClick={() => decreaseCount(id)}
+            >
+              <i className="fas fa-minus me-2"></i> Eliminar
+            </button>
+
+            {/* ✅ 1) Botón añadir: mantiene interacción con CartProvider */}
+            <button
+              className="btn btn-success border-success text-white flex-fill py-2"
+              onClick={() =>
+                increaseCount({
+                  id,
+                  img,
+                  name,
+                  description: desc, // 👈 el carrito usa "description", mapeamos desde "desc"
+                  price,
+                  ingredients,
+                })
+              }
+            >
               <i className="fas fa-cart-plus me-2"></i> Añadir al carrito
             </button>
           </div>
