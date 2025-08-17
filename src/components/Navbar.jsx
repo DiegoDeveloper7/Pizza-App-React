@@ -1,9 +1,11 @@
+// src/components/Navbar.jsx
 import { Link } from "react-router-dom";
-import { useCart } from "../context/CartProvider"; // 🆕 Importar hook
+import { useCart } from "../context/CartProvider";
+import { useUser } from "../context/UserProvider"; // 🆕 Importar hook de usuario
 
 export const Navbar = () => {
-  const token = false;
-  const { total } = useCart(); // 🆕 Obtener total del contexto
+  const { total } = useCart();
+  const { token, logout } = useUser(); // 🆕 Obtener token y logout del contexto
 
   return (
     <nav
@@ -37,6 +39,7 @@ export const Navbar = () => {
           id="navbarNav"
         >
           <ul className="navbar-nav">
+            {/* Home siempre visible */}
             <li className="nav-item">
               <Link className="nav-link px-3" to="/">
                 <i className="fas fa-home me-1"></i> Home
@@ -45,19 +48,25 @@ export const Navbar = () => {
 
             {token ? (
               <>
+                {/* Si está logueado */}
                 <li className="nav-item">
                   <Link className="nav-link px-3" to="/profile">
                     <i className="fas fa-user me-1"></i> Profile
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link px-3" href="#">
+                  {/* Botón logout */}
+                  <button
+                    className="nav-link px-3 btn btn-link text-light"
+                    onClick={logout}
+                  >
                     <i className="fas fa-sign-out-alt me-1"></i> Logout
-                  </a>
+                  </button>
                 </li>
               </>
             ) : (
               <>
+                {/* Si no está logueado */}
                 <li className="nav-item">
                   <Link className="nav-link px-3" to="/login">
                     <i className="fas fa-sign-in-alt me-1"></i> Login
@@ -68,21 +77,11 @@ export const Navbar = () => {
                     <i className="fas fa-user-plus me-1"></i> Register
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link px-3" to="/Profile">
-                    <i className="fas fa-user-plus me-1"></i> Profile
-                  </Link>
-                </li>
-                  <li className="nav-item">
-                  <Link className="nav-link px-3" to="/pizza">
-                     <i className="fas fa-pizza-slice me-2"></i> Pizza
-                  </Link>
-                </li>
               </>
             )}
           </ul>
 
-          {/* Botón Total que lleva a Cart */}
+          {/* Total siempre visible */}
           <Link
             to="/cart"
             className="btn btn-outline-light d-flex align-items-center ms-auto btn-price btn-success me-5 mt-3 mt-lg-0"
@@ -92,8 +91,7 @@ export const Navbar = () => {
             {total.toLocaleString("es-CL", {
               style: "currency",
               currency: "CLP",
-            })}{" "}
-            {/* 🆕 total desde contexto */}
+            })}
           </Link>
         </div>
       </div>
