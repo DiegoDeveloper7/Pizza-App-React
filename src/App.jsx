@@ -1,8 +1,7 @@
 // App.jsx
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import { CartProvider } from "./context/CartProvider";
-import { ApiProvider } from "./context/ApiContext";
+
 
 import { Navbar } from './components/Navbar';
 import { Header } from './components/Header';
@@ -20,8 +19,6 @@ import { NotFound } from './pages/NotFound';
 function App() {
   return (
 
-    <CartProvider>
-       <ApiProvider>
     <BrowserRouter>
       <div className="app-container">
         <Navbar />
@@ -34,7 +31,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/profile" element={<Profile />} />
-           <Route path="/pizza/:id" element={<Pizza />} /> {/* ruta dinámica con id */}
+            <Route path="/pizza/:id" element={<Pizza />} /> {/* ruta dinámica con id */}
             <Route path="*" element={<NotFound />} /> {/* Página 404 */}
           </Routes>
         </main>
@@ -42,8 +39,6 @@ function App() {
         <Footer />
       </div>
     </BrowserRouter>
-    </ApiProvider>
-    </CartProvider>
 
   );
 }

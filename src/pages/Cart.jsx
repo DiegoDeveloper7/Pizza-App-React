@@ -1,7 +1,12 @@
 import { useCart } from "../context/CartProvider";
+// 🔹 Importamos el contexto de usuario
+import { useUser } from "../context/UserProvider";
 
 export const Cart = () => {
   const { cart, increaseCount, decreaseCount, total } = useCart();
+
+  // 🔹 Consumimos el token desde UserProvider
+  const { token } = useUser();
 
   const formattedTotal = total.toLocaleString("es-CL", {
     style: "currency",
@@ -66,9 +71,12 @@ export const Cart = () => {
         </h4>
       </div>
 
-      <div className="text-center mt-3">
-        <button className="btn  btn-lg button-pay">Pagar</button>
-      </div>
+      {/* 🔹 Mostramos el botón solo si el token está en true */}
+      {token && (
+        <div className="text-center mt-3">
+          <button className="btn btn-lg button-pay">Pagar</button>
+        </div>
+      )}
     </div>
   );
 };
