@@ -1,8 +1,6 @@
 // App.jsx
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-
-
 import { Navbar } from './components/Navbar';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -16,9 +14,12 @@ import { Pizza } from './pages/Pizza';
 import { Profile } from './pages/Profile';
 import { NotFound } from './pages/NotFound';
 
+// Importar rutas protegidas
+import { ProtectedRoute } from './routes/ProtectedRoute';
+import { PublicRoute } from './routes/PublicRoute';
+
 function App() {
   return (
-
     <BrowserRouter>
       <div className="app-container">
         <Navbar />
@@ -27,10 +28,36 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
+
+            {/* 🔒 Rutas públicas (solo accesibles sin token) */}
+            <Route 
+              path="/register" 
+              element={
+                <PublicRoute>
+                  <Register />
+                </PublicRoute>
+              } 
+            />
+            <Route 
+              path="/login" 
+              element={
+                <PublicRoute>
+                  <Login />
+                </PublicRoute>
+              } 
+            />
+
+            {/* 🔒 Ruta protegida (solo accesible con token) */}
+            <Route 
+              path="/profile" 
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              } 
+            />
+
             <Route path="/cart" element={<Cart />} />
-            <Route path="/profile" element={<Profile />} />
             <Route path="/pizza/:id" element={<Pizza />} /> {/* ruta dinámica con id */}
             <Route path="*" element={<NotFound />} /> {/* Página 404 */}
           </Routes>
@@ -39,7 +66,6 @@ function App() {
         <Footer />
       </div>
     </BrowserRouter>
-
   );
 }
 
