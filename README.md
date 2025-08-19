@@ -15,3 +15,5 @@ En consecuencia, para hacer la correción correspondiente desde un ordenador Win
 5to. desafio. Creacion de rutas con React Router 6. Creacion de componente Notfoud.jsx y Profile.jsx. (HITO 5).
 
 6to desafio. Creación de contexto: CartProvider.jsx para conectar el Home, Nav, Cart. ApiContext.jsx para conectar Home.jsx y Pizza.jsx. (HITO 6)
+
+7mo desafio. Creación de rutas protegidas, token, ProtecteRoute.jsx PublicRoute.jsx (HITO 7)

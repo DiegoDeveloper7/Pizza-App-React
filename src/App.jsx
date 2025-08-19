@@ -1,4 +1,3 @@
-// App.jsx
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { Navbar } from './components/Navbar';
@@ -29,7 +28,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
 
-            {/* 🔒 Rutas públicas (solo accesibles sin token) */}
+            {/* Rutas públicas (solo accesibles sin token) */}
             <Route 
               path="/register" 
               element={
@@ -47,7 +46,7 @@ function App() {
               } 
             />
 
-            {/* 🔒 Ruta protegida (solo accesible con token) */}
+            {/*  Ruta protegida (solo accesible con token) */}
             <Route 
               path="/profile" 
               element={
